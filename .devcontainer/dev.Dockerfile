@@ -32,8 +32,22 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 RUN echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/hashicorp.list
 RUN apt-get update && apt-get install terraform
 
+# Python and pre-commit
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 python3-pip\
+    && apt-get purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install pre-commit
+
 #Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+#Install golang stuff
+RUN go install github.com/cosmtrek/air@latest
+RUN go install golang.org/x/tools/cmd/goimports@latest
+RUN go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+RUN go install github.com/go-critic/go-critic/cmd/gocritic@latest
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin 
 
 #Fix some file permissions
 RUN chown -R $USERNAME:$USERNAME /home/$USERNAME/

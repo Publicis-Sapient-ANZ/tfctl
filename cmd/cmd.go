@@ -41,11 +41,12 @@ func init() {
 	RootCmd.PersistentFlags().StringVarP(&v, "verbosity", "v", logrus.InfoLevel.String(), "Log level (debug, info, warn, error, fatal, panic")
 
 	RootCmd.PersistentFlags().String("env-name", "", "The environment for which you wish to perform the terraform operation on")
-	RootCmd.MarkPersistentFlagRequired("env-name")
-	viper.BindPFlag("env-name", RootCmd.PersistentFlags().Lookup("env-name"))
+	RootCmd.MarkPersistentFlagRequired("env-name") //nolint
+
+	viper.BindPFlag("env-name", RootCmd.PersistentFlags().Lookup("env-name")) //nolint
 
 	RootCmd.PersistentFlags().String("config-path", "", "Pointer to the root of the configuration config set (if you are not running the tfctl from the working directory)")
-	viper.BindPFlag("config-path", RootCmd.PersistentFlags().Lookup("config-path"))
+	viper.BindPFlag("config-path", RootCmd.PersistentFlags().Lookup("config-path")) //nolint
 
 	RootCmd.AddCommand(PlanCmd)
 	RootCmd.AddCommand(ValidateCmd)

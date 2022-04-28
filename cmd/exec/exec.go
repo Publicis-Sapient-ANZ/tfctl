@@ -73,10 +73,10 @@ func ExecuteCommand(commandConfig CommandConfig) (commandResult CommandResult, c
 
 	err = cmd.Wait()
 	if err != nil {
-		return commandResult, fmt.Errorf("Command '%s' failed with %s\n", commandConfig.Command, err)
+		return commandResult, fmt.Errorf("command '%s' failed with %s\n", commandConfig.Command, err)
 	}
 	if errStdout != nil || errStderr != nil {
-		return commandResult, fmt.Errorf("Failed to capture stdout or stderr, the command may have run")
+		return commandResult, fmt.Errorf("failed to capture stdout or stderr, the command may have run")
 	}
 
 	commandResult.StdOut = string(stdout.Bytes())

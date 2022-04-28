@@ -45,7 +45,10 @@ func initAzureBacked(config *model.Config) error {
 
 	// Create the storage container if not exists
 	if config.Spec.Backend.AutoCreateStorage == "true" {
-		createBackendStorage(config)
+		err := createBackendStorage(config)
+		if err != nil {
+			return err
+		}
 	}
 
 	// Setup the environment for backend config
