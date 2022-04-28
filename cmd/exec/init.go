@@ -1,8 +1,6 @@
 package exec
 
 import (
-	"fmt"
-
 	"github.com/quantize-io/tfctl/cmd/model"
 	"github.com/sirupsen/logrus"
 )
@@ -18,7 +16,7 @@ func ExecuteInit(workingDir string, config model.Config) (result CommandResult, 
 		WorkingDirecotry: workingDir,
 	}
 
-	logrus.Info(fmt.Printf("Starting terraform init for environment: %s", workingDir))
+	logrus.Infof("Starting terraform init for environment: %v", workingDir)
 	_, error := ExecuteCommand(initCommandConfig)
 	if error != nil {
 		logrus.Error(error)

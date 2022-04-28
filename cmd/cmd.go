@@ -49,6 +49,8 @@ func init() {
 
 	RootCmd.AddCommand(PlanCmd)
 	RootCmd.AddCommand(ValidateCmd)
+	RootCmd.AddCommand(ApplyCmd)
+	RootCmd.AddCommand(DestroyCmd)
 
 }
 
@@ -65,6 +67,22 @@ var PlanCmd = &cobra.Command{
 	Short: "perform a terraform plan",
 	Run: func(cmd *cobra.Command, args []string) {
 		exec.RunPlan(cmd, args)
+	},
+}
+
+var ApplyCmd = &cobra.Command{
+	Use:   "apply",
+	Short: "perform a terraform apply",
+	Run: func(cmd *cobra.Command, args []string) {
+		exec.RunApply(cmd, args)
+	},
+}
+
+var DestroyCmd = &cobra.Command{
+	Use:   "destroy",
+	Short: "perform a terraform destroy",
+	Run: func(cmd *cobra.Command, args []string) {
+		exec.RunDestroy(cmd, args)
 	},
 }
 

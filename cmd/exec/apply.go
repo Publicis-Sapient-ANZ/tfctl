@@ -18,7 +18,7 @@ func RunApply(cmd *cobra.Command, args []string) {
 	}
 
 	// Configure the backend
-	logrus.Infof("processing plan for env: %v", config.Metadata.Name)
+	logrus.Infof("processing apply for env: %v", config.Metadata.Name)
 	err = backend.InitBackend(config)
 	if err != nil {
 		logrus.Fatal(err)
@@ -37,7 +37,7 @@ func RunApply(cmd *cobra.Command, args []string) {
 		logrus.Fatal(err)
 	}
 
-	// Execute the plan
+	// Execute the apply
 	params := make([]string, 0)
 	params = append(params, "apply")
 	params = append(params, "-auto-approve")
