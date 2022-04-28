@@ -1,0 +1,22 @@
+apiVersion: tfctl/v1alpha1
+kind: Config
+metadata:
+  name: dev-config
+  environment: dev
+  description: Dev terraform configuration
+spec:
+  backend:
+    type: azure
+    autoCreateStorage: true
+    storageAccountRg: RG_DWF_INFRA_DEV_AUS
+    storageAccountName: csvdwfinfrastgaccount
+    storageAccountContainer: infra-rt-delete-me
+    stateFileName: foodev.tfstate
+    subscriptionId: e758b99b-a23d-4e18-8cfe-becc64f568b8
+    tenantId: 722ea0be-3e1c-4b11-ad6f-9401d6856e24
+    credentials:
+      useAzLogin: true
+      fromEnvironment: ifPresent
+      clientIdEnvName: servicePrincipalId
+      clientSecretEnvName: servicePrincipalKey
+    
