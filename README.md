@@ -1,4 +1,4 @@
-# Terraform Control Command Line Tool
+# Terraform Control
 
 ## Purpose
 
@@ -15,15 +15,19 @@ Its main features are:
 
 To install the ftctl binary run to following:
 
+TODO: create the below script....
+
 ```
 curl -sS https://github.com/Publicis-Sapient-ANZ/tfctl/blob/main/install.sh | sh
 ```
+
+or optionally use the provided Dockerfile to create a cointainer with the cli baked in.
 
 ## Usage
 
 ### Inititaliase a new project configuration set
 
-TODO This is not currently implemented
+TODO: This is not currently implemented
 
 ```
 tfctl project init
@@ -55,7 +59,7 @@ tfctl destroy --config-path ./example --env-name dev
 
 ## Configuration
 
-tfctl configuration is stored per environment. The file must be name <env-name>.tfctl.yaml
+tfctl configuration is stored per environment. The file must be named <env-name>.tfctl.yaml
 
 Sample configuration is provided below. Refer to the table for information on each element.
 
