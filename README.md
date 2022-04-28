@@ -59,7 +59,7 @@ tfctl destroy --config-path ./example --env-name dev
 
 ## Configuration
 
-tfctl configuration is stored per environment. The file must be named <env-name>.tfctl.yaml
+tfctl configuration is stored per environment. The file must be named \<env-name\>.tfctl.yaml
 
 Sample configuration is provided below. Refer to the table for information on each element.
 
@@ -96,9 +96,9 @@ TODO: table showing config params
 To build the cli run:
 
 ```
-go build
+go build -o tfctl
 ```
 
 ### Develop
 
-Please use the .devcontainer to start a new local environment. It will install and configure all dependencies for you.
+Please use the .devcontainer to start a new local development environment. It will install and configure all dependencies for you. Check the [README.md](./.devcontainer/README.md) for details.
