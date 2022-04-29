@@ -1,3 +1,4 @@
 test pr
 test 1
 test 2docs: correct spelling of CHANGELOG
+fix: prevent racing of requests
