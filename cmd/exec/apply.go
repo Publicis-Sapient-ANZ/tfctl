@@ -1,18 +1,28 @@
 package exec
 
 import (
+	"fmt"
+
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
 	backend "github.com/quantize-io/tfctl/cmd/backend"
-	util "github.com/quantize-io/tfctl/cmd/util"
+	config "github.com/quantize-io/tfctl/cmd/config"
 )
 
 func RunApply(cmd *cobra.Command, args []string) {
 
+	var filePath string = fmt.Sprintf("%v/environments/%v/%v.tfctl.yaml", viper.GetString("config-path"), viper.GetString("env-name"), viper.GetString("env-name"))
+
+	// Validate the config schema
+	err := config.ValidateConfig(filePath)
+	if err != nil {
+		logrus.Fatal("config file does not validate")
+	}
+
 	// Load the config file
-	config, err := util.LoadConfigFromFile(viper.GetString("config-path"), viper.GetString("env-name"))
+	config, err := config.LoadConfigFromFile(filePath)
 	if err != nil {
 		logrus.Fatal(err)
 	}
