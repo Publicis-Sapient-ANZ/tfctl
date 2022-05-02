@@ -1,29 +1,35 @@
 package model
 
 type Config struct {
-	APIVersion string `yaml:"apiVersion"`
-	Kind       string `yaml:"kind"`
-	Metadata   struct {
-		Name        string `yaml:"name"`
-		Description string `yaml:"description"`
-		Environment string `yaml:"environment"`
-	} `yaml:"metadata"`
-	Spec struct {
-		Backend struct {
-			Type                    string `yaml:"type"`
-			AutoCreateStorage       string `yaml:"autoCreateStorage"`
-			StorageAccountRG        string `yaml:"storageAccountRg"`
-			StorageAccountName      string `yaml:"storageAccountName"`
-			StorageAccountContainer string `yaml:"storageAccountContainer"`
-			StateFileName           string `yaml:"stateFileName"`
-			SubscriptionID          string `yaml:"subscriptionId"`
-			TenantID                string `yaml:"tenantId"`
-			Credentials             struct {
-				UseAzLogin          string `yaml:"useAzLogin"`
-				FromEnvironment     string `yaml:"fromEnvironment"`
-				ClientIDEnvName     string `yaml:"clientIdEnvName"`
-				ClientSecretEnvName string `yaml:"clientSecretEnvName"`
-			} `yaml:"credentials"`
-		} `yaml:"backend"`
-	} `yaml:"spec"`
+	APIVersion string   `yaml:"apiVersion"`
+	Kind       string   `yaml:"kind"`
+	Metadata   Metadata `yaml:"metadata"`
+	Spec       Spec     `yaml:"spec"`
+}
+type Metadata struct {
+	Name        string `yaml:"name"`
+	Environment string `yaml:"environment"`
+	Description string `yaml:"description"`
+}
+type Credentials struct {
+	UseAzLogin          string `yaml:"useAzLogin"`
+	FromEnvironment     string `yaml:"fromEnvironment"`
+	ClientIDEnvName     string `yaml:"clientIdEnvName"`
+	ClientSecretEnvName string `yaml:"clientSecretEnvName"`
+}
+type AzureBackend struct {
+	AutoCreateStorage       string      `yaml:"autoCreateStorage"`
+	StorageAccountRg        string      `yaml:"storageAccountRg"`
+	StorageAccountName      string      `yaml:"storageAccountName"`
+	StorageAccountContainer string      `yaml:"storageAccountContainer"`
+	StateFileName           string      `yaml:"stateFileName"`
+	SubscriptionID          string      `yaml:"subscriptionId"`
+	TenantID                string      `yaml:"tenantId"`
+	Credentials             Credentials `yaml:"credentials"`
+}
+type Backend struct {
+	Azure AzureBackend `yaml:"azure"`
+}
+type Spec struct {
+	Backend Backend `yaml:"backend"`
 }

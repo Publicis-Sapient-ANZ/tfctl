@@ -8,11 +8,10 @@ import (
 
 func InitBackend(config *model.Config) error {
 
-	switch config.Spec.Backend.Type {
-	case "azure":
+	if (model.AzureBackend{}) != config.Spec.Backend.Azure {
 		return initAzureBacked(config)
-	default:
-		return fmt.Errorf("unsupported backend: %v", config.Spec.Backend.Type)
 	}
+
+	return fmt.Errorf("unsupported or no backend type provided")
 
 }
