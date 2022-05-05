@@ -16,7 +16,6 @@ jobs:
           go-version: '>=1.18.0'
       - run: go mod download
       - run: go build -o tfctl
-      - run: chmod +x tfctl && tfctl
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
