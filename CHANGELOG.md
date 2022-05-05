@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.1.1-alpha](https://github.com/Publicis-Sapient-ANZ/tfctl/compare/v0.1.0-alpha...v0.1.1-alpha) (2022-05-05)
+
+
+### Bug Fixes
+
+* remove it ([34ed5db](https://github.com/Publicis-Sapient-ANZ/tfctl/commit/34ed5db16de7affc6b0b516bde6f3e4a26aa9981))
+* return exit code for tf plan when changes detected ([b0c0350](https://github.com/Publicis-Sapient-ANZ/tfctl/commit/b0c03504a43a92995cc4a03a2f11607510045fe3))
+
 ## [0.1.0-alpha](https://github.com/Publicis-Sapient-ANZ/tfctl/compare/v0.0.1-alpha...v0.1.0-alpha) (2022-05-02)
 
 
