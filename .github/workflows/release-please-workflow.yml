@@ -7,8 +7,8 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      release-created: ${{ release.outputs.release_created }}
-      release-name: ${{ release.outputs.tag_name }}
+      release-created: ${{ steps.release.outputs.release_created }}
+      release-name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
