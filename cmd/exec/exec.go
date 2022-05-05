@@ -2,9 +2,9 @@ package exec
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"os/exec"
 	"sync"
@@ -17,6 +17,7 @@ type CommandConfig struct {
 }
 
 type CommandResult struct {
+	exitCode int
 	StdOut   string
 	StdError string
 }
@@ -57,7 +58,7 @@ func ExecuteCommand(commandConfig CommandConfig) (commandResult CommandResult, c
 	stderr := NewCapturingPassThroughWriter(os.Stderr)
 	err := cmd.Start()
 	if err != nil {
-		log.Fatalf("cmd.Start() failed with '%s'\n", err)
+		return commandResult, fmt.Errorf("cmd.Start() failed with '%s'\n", err)
 	}
 
 	var wg sync.WaitGroup
@@ -73,7 +74,10 @@ func ExecuteCommand(commandConfig CommandConfig) (commandResult CommandResult, c
 
 	err = cmd.Wait()
 	if err != nil {
-		return commandResult, fmt.Errorf("command '%s' failed with %s\n", commandConfig.Command, err)
+		var exerr *exec.ExitError
+		if errors.As(err, &exerr) {
+			commandResult.exitCode = exerr.ExitCode()
+		}
 	}
 	if errStdout != nil || errStderr != nil {
 		return commandResult, fmt.Errorf("failed to capture stdout or stderr, the command may have run")
