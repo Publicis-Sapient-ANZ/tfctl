@@ -1,2 +1,4 @@
 example/build
 tfctl
+.credentials
+.DS_Store

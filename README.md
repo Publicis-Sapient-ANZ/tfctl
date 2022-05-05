@@ -72,19 +72,19 @@ metadata:
   description: Dev terraform configuration
 spec:
   backend:
-    type: azure
-    autoCreateStorage: true
-    storageAccountRg: RD_DEV_AUS
-    storageAccountName: stgdevtfstateaus
-    storageAccountContainer: dev-infra-state
-    stateFileName: dev.tfstate
-    subscriptionId: 00000000-0000-0000-0000-000000000000
-    tenantId: 00000000-0000-0000-0000-000000000000
-    credentials:
-      useAzLogin: fallback
-      fromEnvironment: ifPresent
-      clientIdEnvName: servicePrincipalId
-      clientSecretEnvName: servicePrincipalKey
+    azure:
+      autoCreateStorage: true
+      storageAccountRg: RD_DEV_AUS
+      storageAccountName: stgdevtfstateaus
+      storageAccountContainer: dev-infra-state
+      stateFileName: dev.tfstate
+      subscriptionId: 00000000-0000-0000-0000-000000000000
+      tenantId: 00000000-0000-0000-0000-000000000000
+      credentials:
+        useAzLogin: fallback
+        fromEnvironment: ifPresent
+        clientIdEnvName: servicePrincipalId
+        clientSecretEnvName: servicePrincipalKey
 ```
 
 TODO: table showing config params

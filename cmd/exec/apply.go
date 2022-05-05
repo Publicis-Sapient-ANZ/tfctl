@@ -50,6 +50,7 @@ func RunApply(cmd *cobra.Command, args []string) {
 	// Execute the apply
 	params := make([]string, 0)
 	params = append(params, "apply")
+	params = append(params, "-input=false")
 	params = append(params, "-auto-approve")
 
 	commandConfig := CommandConfig{

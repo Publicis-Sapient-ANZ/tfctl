@@ -1,0 +1,19 @@
+FROM  --platform=linux/amd64 debian:bullseye-slim
+
+#Install software dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends sudo git make apt-transport-https gnupg2 curl lsb-release zsh ca-certificates\
+    && apt-get purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists/*
+
+#Install Terraform
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+RUN echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/hashicorp.list
+RUN apt-get update && apt-get install terraform
+
+#Install Azure CLI
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+#Install tfctl binary
+RUN curl -L https://github.com/Publicis-Sapient-ANZ/tfctl/releases/download/v0.1.0-alpha/tfctl  -o /usr/local/bin/tfctl && chmod +x /usr/local/bin/tfctl
+
