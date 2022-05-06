@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.2-alpha](https://github.com/Publicis-Sapient-ANZ/tfctl/compare/v0.1.1-alpha...v0.1.2-alpha) (2022-05-06)
+
+
+### Bug Fixes
+
+* return exit codes for all execuitions ([f8f09bb](https://github.com/Publicis-Sapient-ANZ/tfctl/commit/f8f09bb7cf0497b00bc1c3f6da157c2b78fa2b3a))
+
 ### [0.1.1-alpha](https://github.com/Publicis-Sapient-ANZ/tfctl/compare/v0.1.0-alpha...v0.1.1-alpha) (2022-05-05)
 
 
