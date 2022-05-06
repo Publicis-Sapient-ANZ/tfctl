@@ -2,6 +2,7 @@ package exec
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -57,9 +58,12 @@ func RunDestroy(cmd *cobra.Command, args []string) {
 		Paramaters:       params,
 		WorkingDirecotry: buildPath,
 	}
-	_, err2 := ExecuteCommand(commandConfig)
+	commandResult, err2 := ExecuteCommand(commandConfig)
 	if err2 != nil {
 		logrus.Fatal(err)
 	}
+
+	// Exit with the code captured by the command
+	os.Exit(commandResult.exitCode)
 
 }
