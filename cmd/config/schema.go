@@ -124,9 +124,6 @@ var schemav1beta1 string = `
                 "useAzLogin": {
                     "type": "string"
                 },
-                "fromEnvironment": {
-                    "type": "string"
-                },
                 "clientIdEnvName": {
                     "type": "string"
                 },

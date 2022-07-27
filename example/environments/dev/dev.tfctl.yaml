@@ -8,15 +8,13 @@ spec:
   backend:
     azure:
       autoCreateStorage: true
-      storageAccountRg: RG_DWF_INFRA_DEV_AUS
-      storageAccountName: csvdwfinfrastgaccount
-      storageAccountContainer: infra-rt-delete-me
-      stateFileName: foodev.tfstate
-      subscriptionId: e758b99b-a23d-4e18-8cfe-becc64f568b8
-      tenantId: 722ea0be-3e1c-4b11-ad6f-9401d6856e24
+      storageAccountRg: RD_DEV_AUS
+      storageAccountName: stgdevtfstateaus
+      storageAccountContainer: dev-infra-state
+      stateFileName: dev.tfstate
+      subscriptionId: 00000000-0000-0000-0000-000000000000
+      tenantId: 00000000-0000-0000-0000-000000000000
       credentials:
         useAzLogin: fallback
-        fromEnvironment: ifPresent
         clientIdEnvName: servicePrincipalId
         clientSecretEnvName: servicePrincipalKey
-    
