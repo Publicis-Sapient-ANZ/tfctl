@@ -13,7 +13,6 @@ type Metadata struct {
 }
 type Credentials struct {
 	UseAzLogin          string `yaml:"useAzLogin"`
-	FromEnvironment     string `yaml:"fromEnvironment"`
 	ClientIDEnvName     string `yaml:"clientIdEnvName"`
 	ClientSecretEnvName string `yaml:"clientSecretEnvName"`
 }

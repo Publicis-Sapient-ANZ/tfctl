@@ -121,9 +121,6 @@
                 "useAzLogin": {
                     "type": "string"
                 },
-                "fromEnvironment": {
-                    "type": "string"
-                },
                 "clientIdEnvName": {
                     "type": "string"
                 },
